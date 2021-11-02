@@ -193,7 +193,8 @@
             this.divElt.style.width = minWidth;
             // Make sure to display the element before getting is width
             this.divElt.style.display = "";
-            this.minWidth = this.divElt.offsetWidth;
+            // offsetWidth is zero if the element is in a hidden tab
+            this.minWidth = Math.max(this.divElt.offsetWidth, minWidth.replace('px', ''));
         },
         /**
          * Refresh the scalebar with the options submitted.
